@@ -60,7 +60,7 @@ const Opportunities = () => {
   const fetchOpportunities = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:5000/api/opportunities');
+      const response = await axios.get('https://nitm-content-hub-1.onrender.com/api/opportunities');
       setOpportunities(response.data);
     } catch (error) {
       console.error('Error fetching opportunities:', error);
@@ -73,7 +73,7 @@ const Opportunities = () => {
   const handleCreateOpportunity = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/opportunities', newOpportunity);
+      await axios.post('https://nitm-content-hub-1.onrender.com/api/opportunities', newOpportunity);
       toast.success('Opportunity created successfully');
       setOpenDialog(false);
       setNewOpportunity({
@@ -97,7 +97,7 @@ const Opportunities = () => {
 
   const handleDeleteOpportunity = async (opportunityId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/opportunities/${opportunityId}`);
+      await axios.delete(`https://nitm-content-hub-1.onrender.com/api/opportunities/${opportunityId}`);
       toast.success('Opportunity deleted successfully');
       fetchOpportunities();
     } catch (error) {
@@ -108,7 +108,7 @@ const Opportunities = () => {
 
   const handleApply = async (opportunityId) => {
     try {
-      await axios.post(`http://localhost:5000/api/opportunities/${opportunityId}/apply`);
+      await axios.post(`https://nitm-content-hub-1.onrender.com/api/opportunities/${opportunityId}/apply`);
       toast.success('Application submitted successfully');
       fetchOpportunities();
     } catch (error) {

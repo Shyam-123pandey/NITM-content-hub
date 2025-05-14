@@ -37,10 +37,10 @@ const Home = () => {
         try {
           setLoading(true);
           const [contentRes, discussionsRes, eventsRes, opportunitiesRes] = await Promise.all([
-            axios.get('http://localhost:5000/api/content?limit=3'),
-            axios.get('http://localhost:5000/api/discussions?limit=3'),
-            axios.get('http://localhost:5000/api/calendar?limit=3'),
-            axios.get('http://localhost:5000/api/opportunities?limit=3'),
+            axios.get('https://nitm-content-hub-1.onrender.com/api/content?limit=3'),
+            axios.get('https://nitm-content-hub-1.onrender.com/api/discussions?limit=3'),
+            axios.get('https://nitm-content-hub-1.onrender.com/api/calendar?limit=3'),
+            axios.get('https://nitm-content-hub-1.onrender.com/api/opportunities?limit=3'),
           ]);
 
           setRecentContent(contentRes.data);

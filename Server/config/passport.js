@@ -13,7 +13,7 @@ passport.use(
         {
             clientID: process.env.GOOGLE_ID,
             clientSecret: process.env.GOOGLE_SECRET,
-            callbackURL: 'http://localhost:5000/api/auth/google/callback',
+            callbackURL: 'https://nitm-content-hub-1.onrender.com/api/auth/google/callback',
         },
         async (accessToken, refreshToken, profile, done) => {
             try {

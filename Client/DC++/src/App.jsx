@@ -22,6 +22,7 @@ import Opportunities from './pages/Opportunities';
 import Profile from './pages/Profile'
 import Content from './pages/Content'
 import FilterOnboarding from './pages/FilterOnboarding';
+import Settings from './components/Settings';
 
 const App = () => {
     return (
@@ -48,39 +49,28 @@ const App = () => {
                                     </FilterOnboarding>
                                 } /> */}
                                 <Route path="chat" element={
-                                    <FilterOnboarding>
                                         <Chat />
-                                    </FilterOnboarding>
                                 } />
                                 <Route path="create-chat" element={
-                                    <FilterOnboarding>
                                         <CreateChat />
-                                    </FilterOnboarding>
                                 } />
                                 <Route path="discussions" element={
-                                    <FilterOnboarding>
                                         <Discussions />
-                                    </FilterOnboarding>
                                 } />
                                 <Route path='profile' element={
-                                    <FilterOnboarding>
                                         <Profile />
-                                    </FilterOnboarding>
+                                }/>
+                                <Route path='settings' element={
+                                        <Settings/>
                                 }/>
                                 <Route path='content' element={
-                                    <FilterOnboarding>
                                         <Content />
-                                    </FilterOnboarding>
                                 }/>
                                 <Route path="calendar" element={
-                                    <FilterOnboarding>
                                         <Calendar />
-                                    </FilterOnboarding>
                                 } />
                                 <Route path="opportunities" element={
-                                    <FilterOnboarding>
                                         <Opportunities />
-                                    </FilterOnboarding>
                                 } />
                             </Route>
 

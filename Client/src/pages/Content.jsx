@@ -8,7 +8,7 @@ function Content() {
     useEffect(() => {
         const fetchContent = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/content');
+                const response = await axios.get('https://nitm-content-hub-1.onrender.com/api/content');
                 console.log('API Response:', response.data);
                 if (Array.isArray(response.data)) {
                     setContentList(response.data);
@@ -50,7 +50,7 @@ function Content() {
                             formData.append('branch', 'CSE');
                             formData.append('semester', '1');
 
-                            axios.post('http://localhost:5000/api/content', formData)
+                            axios.post('https://nitm-content-hub-1.onrender.com/api/content', formData)
                                 .then(() => {
                                     alert('File uploaded successfully');
                                     window.location.reload();
@@ -85,7 +85,7 @@ function Content() {
                             </div>
                             {item.fileUrl && (
                                 <a 
-                                    href={`http://localhost:5000${item.fileUrl}`}
+                                    href={`https://nitm-content-hub-1.onrender.com${item.fileUrl}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     style={{ color: 'blue', textDecoration: 'underline' }}

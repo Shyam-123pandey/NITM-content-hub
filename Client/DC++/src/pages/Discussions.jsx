@@ -54,7 +54,7 @@ const Discussions = () => {
   const fetchDiscussions = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:5000/api/discussions');
+      const response = await axios.get('https://nitm-content-hub-1.onrender.com/api/discussions');
       setDiscussions(response.data);
     } catch (error) {
       console.error('Error fetching discussions:', error);
@@ -71,7 +71,7 @@ const Discussions = () => {
         ...newDiscussion,
         authorRole: user.role || 'student'
       };
-      await axios.post('http://localhost:5000/api/discussions', discussionData);
+      await axios.post('https://nitm-content-hub-1.onrender.com/api/discussions', discussionData);
       toast.success('Discussion created successfully');
       setOpenDialog(false);
       setNewDiscussion({
@@ -90,7 +90,7 @@ const Discussions = () => {
   const handleAddComment = async (discussionId) => {
     if (!comment.trim()) return;
     try {
-      await axios.post(`http://localhost:5000/api/discussions/${discussionId}/comments`, {
+      await axios.post(`https://nitm-content-hub-1.onrender.com/api/discussions/${discussionId}/comments`, {
         content: comment,
       });
       setComment('');
@@ -104,7 +104,7 @@ const Discussions = () => {
 
   const handleUpvote = async (discussionId) => {
     try {
-      await axios.post(`http://localhost:5000/api/discussions/${discussionId}/upvote`);
+      await axios.post(`https://nitm-content-hub-1.onrender.com/api/discussions/${discussionId}/upvote`);
       fetchDiscussions();
     } catch (error) {
       console.error('Error upvoting:', error);

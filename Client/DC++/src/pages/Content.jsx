@@ -59,7 +59,7 @@ const Content = () => {
   const fetchContent = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:5000/api/content', {
+      const response = await axios.get('https://nitm-content-hub-1.onrender.com/api/content', {
         params: filters,
       });
       setContent(Array.isArray(response.data) ? response.data : []);
@@ -92,7 +92,7 @@ const Content = () => {
         return;
       }
 
-      const response = await axios.post('http://localhost:5000/api/content', formData, {
+      const response = await axios.post('https://nitm-content-hub-1.onrender.com/api/content', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           'Authorization': `Bearer ${token}`
@@ -124,7 +124,7 @@ const Content = () => {
 
   const handleDeleteContent = async (contentId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/content/${contentId}`);
+      await axios.delete(`https://nitm-content-hub-1.onrender.com/api/content/${contentId}`);
       toast.success('Content deleted successfully');
       fetchContent();
     } catch (error) {
@@ -136,7 +136,7 @@ const Content = () => {
   const handleDownload = async (contentId) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get(`http://localhost:5000/api/content/${contentId}/download`, {
+      const response = await axios.get(`https://nitm-content-hub-1.onrender.com/api/content/${contentId}/download`, {
         responseType: 'blob',
         headers: token ? { 'Authorization': `Bearer ${token}` } : {}
       });

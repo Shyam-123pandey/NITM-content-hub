@@ -57,7 +57,7 @@ const Calendar = () => {
   const fetchEvents = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:5000/api/calendar');
+      const response = await axios.get('https://nitm-content-hub-1.onrender.com/api/calendar');
       setEvents(response.data);
     } catch (error) {
       console.error('Error fetching events:', error);
@@ -70,7 +70,7 @@ const Calendar = () => {
   const handleCreateEvent = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/calendar', newEvent);
+      await axios.post('https://nitm-content-hub-1.onrender.com/api/calendar', newEvent);
       toast.success('Event created successfully');
       setOpenDialog(false);
       setNewEvent({
@@ -91,7 +91,7 @@ const Calendar = () => {
 
   const handleDeleteEvent = async (eventId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/calendar/${eventId}`);
+      await axios.delete(`https://nitm-content-hub-1.onrender.com/api/calendar/${eventId}`);
       toast.success('Event deleted successfully');
       fetchEvents();
     } catch (error) {
@@ -103,7 +103,7 @@ const Calendar = () => {
   const handleEditEvent = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:5000/api/calendar/${selectedEvent._id}`, selectedEvent);
+      await axios.put(`https://nitm-content-hub-1.onrender.com/api/calendar/${selectedEvent._id}`, selectedEvent);
       toast.success('Event updated successfully');
       setOpenDialog(false);
       setSelectedEvent(null);

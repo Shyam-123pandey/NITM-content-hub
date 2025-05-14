@@ -1,34 +1,33 @@
-import { useState, useEffect } from 'react';
 import {
-  Container,
-  Grid,
-  Card,
-  CardContent,
-  Typography,
-  Button,
-  Box,
-  TextField,
-  Avatar,
-  Divider,
-  CircularProgress,
-  IconButton,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-} from '@mui/material';
-import {
+  Cancel as CancelIcon,
   Edit as EditIcon,
   Save as SaveIcon,
-  Cancel as CancelIcon,
 } from '@mui/icons-material';
-import { useAuth } from '../context/AuthContext';
+import {
+  Avatar,
+  Box,
+  Button,
+  Card,
+  CardContent,
+  CircularProgress,
+  Container,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  FormControl,
+  Grid,
+  IconButton,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+  Typography
+} from '@mui/material';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
+import { useAuth } from '../context/AuthContext';
 
 const Profile = () => {
   const { user, fetchUser, setUser } = useAuth();
@@ -68,7 +67,7 @@ const Profile = () => {
   const handleProfileUpdate = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.put('http://localhost:5000/api/auth/profile', profileData);
+      const response = await axios.put('https://nitm-content-hub-1.onrender.com/api/auth/profile', profileData);
       setUser(response.data);
       setEditMode(false);
       toast.success('Profile updated successfully');
@@ -85,7 +84,7 @@ const Profile = () => {
       return;
     }
     try {
-      await axios.put('http://localhost:5000/api/auth/password', {
+      await axios.put('https://nitm-content-hub-1.onrender.com/api/auth/password', {
         currentPassword: passwordData.currentPassword,
         newPassword: passwordData.newPassword,
       });
