@@ -59,8 +59,12 @@ const Content = () => {
   const fetchContent = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('https://nitm-content-hub-1.onrender.com/api/content', {
-        params: filters,
+      const response = await axios.get('/api/content', {
+        params: {
+          ...filters,
+          _t: Date.now() // Add timestamp to prevent caching
+        },
+        withCredentials: true
       });
       setContent(Array.isArray(response.data) ? response.data : []);
     } catch (error) {
@@ -92,11 +96,12 @@ const Content = () => {
         return;
       }
 
-      const response = await axios.post('https://nitm-content-hub-1.onrender.com/api/content', formData, {
+      const response = await axios.post('/api/content', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           'Authorization': `Bearer ${token}`
         },
+        withCredentials: true
       });
 
       if (response.data) {

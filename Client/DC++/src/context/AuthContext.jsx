@@ -7,6 +7,18 @@ axios.defaults.withCredentials = true;
 axios.defaults.headers.common['Content-Type'] = 'application/json';
 axios.defaults.headers.common['Accept'] = 'application/json';
 
+// Add request interceptor for CORS
+axios.interceptors.request.use(
+    config => {
+        // Add timestamp to prevent caching
+        config.params = { ...config.params, _t: Date.now() };
+        return config;
+    },
+    error => {
+        return Promise.reject(error);
+    }
+);
+
 // Add response interceptor for CORS errors
 axios.interceptors.response.use(
     response => response,
