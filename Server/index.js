@@ -38,8 +38,10 @@ app.use(session({
 
 // CORS configuration
 app.use(cors({
-  origin: 'https://nitm-content-platform.netlify.app' // your Netlify frontend
+  origin: 'https://nitm-content-platform.netlify.app', // must match exactly
+  credentials: true
 }));
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
