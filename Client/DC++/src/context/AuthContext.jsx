@@ -12,6 +12,14 @@ axios.interceptors.request.use(
     config => {
         // Add timestamp to prevent caching
         config.params = { ...config.params, _t: Date.now() };
+        
+        // Ensure credentials are included
+        config.withCredentials = true;
+        
+        // Add CORS headers
+        config.headers['Access-Control-Allow-Origin'] = 'https://nitm-content-platform.netlify.app';
+        config.headers['Access-Control-Allow-Credentials'] = 'true';
+        
         return config;
     },
     error => {
@@ -25,7 +33,10 @@ axios.interceptors.response.use(
     error => {
         if (error.response?.status === 0) {
             console.error('CORS Error:', error);
-            // You might want to show a user-friendly error message here
+            // Show user-friendly error message
+            if (error.message.includes('CORS')) {
+                console.error('CORS Error: Please check if the server is running and CORS is properly configured');
+            }
         }
         return Promise.reject(error);
     }

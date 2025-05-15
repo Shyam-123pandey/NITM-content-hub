@@ -129,7 +129,9 @@ const Content = () => {
 
   const handleDeleteContent = async (contentId) => {
     try {
-      await axios.delete(`https://nitm-content-hub-1.onrender.com/api/content/${contentId}`);
+      await axios.delete(`/api/content/${contentId}`, {
+        withCredentials: true
+      });
       toast.success('Content deleted successfully');
       fetchContent();
     } catch (error) {
@@ -141,9 +143,10 @@ const Content = () => {
   const handleDownload = async (contentId) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get(`https://nitm-content-hub-1.onrender.com/api/content/${contentId}/download`, {
+      const response = await axios.get(`/api/content/${contentId}/download`, {
         responseType: 'blob',
-        headers: token ? { 'Authorization': `Bearer ${token}` } : {}
+        headers: token ? { 'Authorization': `Bearer ${token}` } : {},
+        withCredentials: true
       });
       
       // Create a blob from the response data
